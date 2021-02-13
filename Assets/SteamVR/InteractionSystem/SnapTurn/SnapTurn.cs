@@ -14,6 +14,7 @@ namespace Valve.VR.InteractionSystem
 
         public bool showTurnAnimation = true;
 
+        public bool playSnapSound = true;
         public AudioSource snapTurnSource;
         public AudioClip rotateSound;
 
@@ -112,8 +113,11 @@ namespace Valve.VR.InteractionSystem
 
             canRotate = false;
 
-            snapTurnSource.panStereo = angle / 90;
-            snapTurnSource.PlayOneShot(rotateSound);
+            if (playSnapSound)
+            {
+                snapTurnSource.panStereo = angle / 90;
+                snapTurnSource.PlayOneShot(rotateSound);
+            }
 
             if (fadeScreen)
             {
